@@ -639,3 +639,102 @@ html {
       height: 70vh;
     }
   }
+
+  /* ABOUT ME */
+
+#aboutme {
+    background: #F2F2F2;
+    padding: 3rem 0;
+    text-align: center;
+  }
+  
+  #aboutme p {
+    padding: 20px 30px 5px;
+    font-size: 1.2em;
+    line-height: 1.6;
+    animation: slideIn 2s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  
+  /* MISION VISION VALORES */
+  
+  #mision-vision-valores {
+    background: #F2F2F2;
+    padding: 3rem 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  #mision-vision-valores div {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #f9f9f9;
+    transition: transform 0.3s;
+  }
+  
+  #mision-vision-valores div:hover {
+    transform: scale(1.05);
+  }
+  
+  .left, .right {
+    flex: 1;
+  }
+  
+  .center {
+    flex: 100%;
+    text-align: center;
+  }
+  
+  #mision-vision-valores h2 {
+    font-size: 2em;
+    color: #213635;
+  }
+  
+  #mision-vision-valores p {
+    font-size: 1.1em;
+    color: #1C5052;
+  }
+  
+  
+  /* OBJETIVOS PROFESIONALES */
+  
+  #objetivos-profesionales {
+    position: relative;
+  }
+  
+  #objetivos-profesionales .content {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 50px;
+    border-radius: 8px;
+  }
+  
+  #objetivos-profesionales .content h2 {
+    font-size: 2.5em;
+    color: #1C5052;
+  }
+  
+  #objetivos-profesionales .content ul {
+    /* list-style: none; */
+    padding: 0;
+  }
+  
+  #objetivos-profesionales .content li {
+    font-size: 1.1em;
+    color: #F2F2F2;
+    margin: 10px 0;
+  }
