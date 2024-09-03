@@ -371,6 +371,7 @@ html {
     display: flex;
     justify-content: space-between;
   }
+
   header nav .nav-container .nav-links {
     z-index: 1000;
   }
@@ -485,10 +486,19 @@ html {
     filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.2)); /* Ajusta los valores según tu preferencia */
   }
   
-  .three-js-container {
-    width: 80vw;
-    height: 80vh;
+  .eye-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+  }
   
+  .eye-left, .eye-right {
+    position: absolute;
+    width: 100px;
+    height: 100px;
   }
   
   
@@ -608,9 +618,6 @@ html {
     }
   }
   @media screen and (max-width: 500px) {
-    header nav .nav-container #logo {
-      font-size: 1.5rem;
-    }
     header nav .mobile-menu .container .mobile-menu-links ul li {
       margin: 0 0.5rem;
     }
