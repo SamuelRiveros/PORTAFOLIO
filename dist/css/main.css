@@ -613,6 +613,9 @@ html {
     }
   }
   @media screen and (max-width: 768px) {
+      .eye-container {
+        display: none;
+    }
     .hero {
       width: 90%;
     }
@@ -675,7 +678,7 @@ html {
   
   #mision-vision-valores div {
     flex: 1;
-    margin: 10px;
+    margin: 20px;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
