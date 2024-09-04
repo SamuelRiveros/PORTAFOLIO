@@ -484,6 +484,8 @@ html {
     width: 450px;
     height: auto;
     filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.2)); /* Ajusta los valores según tu preferencia */
+    user-select: none;
+    -webkit-user-drag: none;
   }
   
   .eye-container {
@@ -715,6 +717,17 @@ html {
   #objetivos-profesionales {
     position: relative;
   }
+
+  #sphereContainer {
+    width: 100%;
+    height: 50%; /* Ajusta esto según tus necesidades */
+    background: transparent;
+    position: absolute;
+    left: 250px;
+    bottom: 0px;
+    top: -80px
+  }
+
   
   #objetivos-profesionales .content {
     text-align: center;

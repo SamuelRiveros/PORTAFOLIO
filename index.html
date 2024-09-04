@@ -117,30 +117,16 @@
       </div>
 
       <div class="samsprofile">
+
+        <div class="sphere" id="sphereContainer">
+          
+        </div>
         <div class="profile-container">
             <img src="./dist/img/Sam.png" alt="Yo" class="profile-image">
         </div>
 
-        <!-- <div class="eye-container">
-          <canvas id="eye-left" class="eye-left"></canvas>
-          <canvas id="eye-right" class="eye-right"></canvas>
-        </div> -->
 
       </div>
-
-      <!-- Include Three.js -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-          
-      <!-- Include GLTFLoader from a CDN -->
-      <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
-      
-      <!-- Include custom JavaScript -->
-      <!-- <script src="./js/models.js" defer></script> -->
-
-
-
-
-
       <!-- LINKS SOCIALES -->
       <div class="socials" data-aos="fade-in"> 
         <ul>
@@ -201,6 +187,129 @@
           </ul>
         </div>
       </section>
+    
+      <!-- Include Three.js and GLTFLoader -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/loaders/GLTFLoader.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const container = document.getElementById('sphereContainer');
+          const width = container.clientWidth;
+          const height = container.clientHeight;
+
+          const scene = new THREE.Scene();
+          const camera = new THREE.PerspectiveCamera(65, width / height, 0.1, 1000);
+          const renderer = new THREE.WebGLRenderer({ antialias: true });
+          renderer.setSize(width, height);
+          renderer.setClearColor(0x000000, 0);
+          container.appendChild(renderer.domElement);
+
+          
+          const ambientLight = new THREE.AmbientLight(0x404040, 2); 
+          scene.add(ambientLight);
+
+          const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+          directionalLight.position.set(1, 1, 1).normalize();
+          scene.add(directionalLight);
+
+          
+          const loader = new THREE.GLTFLoader();
+          let sphere;
+
+          loader.load('./dist/assets/sphere.glb', function (gltf) {
+              sphere = gltf.scene;
+              sphere.scale.set(0.5, 0.5, 0.5); 
+              sphere.position.set(0, 0, 0); 
+              scene.add(sphere);
+              console.log('Modelo cargado:', gltf);
+          }, undefined, function (error) {
+              console.error('Error al cargar el modelo:', error);
+          });
+
+          
+          camera.position.set(0, 1, 100);
+          camera.lookAt(0, 1, 0); 
+
+          
+          function onWindowResize() {
+              const width = container.clientWidth;
+              const height = container.clientHeight;
+              renderer.setSize(width, height);
+              camera.aspect = width / height;
+              camera.updateProjectionMatrix();
+          }
+
+          window.addEventListener('resize', onWindowResize);
+          onWindowResize(); 
+
+          
+          let isDragging = false;
+          let previousMousePosition = { x: 0, y: 0 };
+          let rotationVelocity = new THREE.Vector2(0, 0);
+          let rotationEasing = 0.05; 
+
+          
+          function animate() {
+              requestAnimationFrame(animate);
+
+              if (sphere) {
+                  if (isDragging) {
+                      const deltaX = (mousePosition.x - previousMousePosition.x) * 0.005; 
+                      const deltaY = (mousePosition.y - previousMousePosition.y) * 0.005; 
+                      sphere.rotation.y += deltaX;
+                      sphere.rotation.x += deltaY;
+                      previousMousePosition = { ...mousePosition };
+                  } else {
+                      
+                      sphere.rotation.y += rotationVelocity.x;
+                      sphere.rotation.x += rotationVelocity.y;
+                      rotationVelocity.multiplyScalar(1 - rotationEasing);
+                  }
+              }
+
+              renderer.render(scene, camera);
+          }
+
+          animate();
+
+          // Handle mouse events
+          let mousePosition = { x: 0, y: 0 };
+
+          container.addEventListener('mousedown', (event) => {
+              isDragging = true;
+              mousePosition = { x: event.clientX, y: event.clientY };
+              previousMousePosition = { ...mousePosition };
+              container.style.cursor = 'grabbing'; 
+          });
+
+          container.addEventListener('mousemove', (event) => {
+              if (isDragging) {
+                  mousePosition = { x: event.clientX, y: event.clientY };
+              }
+          });
+
+          container.addEventListener('mouseup', () => {
+              isDragging = false;
+              rotationVelocity.set(
+                  (mousePosition.x - previousMousePosition.x) * 0.005, 
+                  (mousePosition.y - previousMousePosition.y) * 0.005 
+              );
+              container.style.cursor = 'grab'; 
+          });
+
+          container.addEventListener('mouseleave', () => {
+              if (isDragging) {
+                  isDragging = false;
+                  rotationVelocity.set(
+                      (mousePosition.x - previousMousePosition.x) * 0.005, 
+                      (mousePosition.y - previousMousePosition.y) * 0.005 
+                  );
+                  container.style.cursor = 'grab'; 
+              }
+          });
+      });
+  </script>
   
   
   
