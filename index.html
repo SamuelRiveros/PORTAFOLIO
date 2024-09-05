@@ -101,10 +101,10 @@
       <div class="hero">
         <div data-aos="fade-up">
           <h1 class="h1">
-            ¡ Hola!, soy <span class="main-font text-green">Samuel Riveros</span>
+            ¡ Hola !, soy <span class="main-font text-green">Samuel Riveros</span>
           </h1>
           <p class="student" id="student">
-            Actualmente me encuentro estudiando en<a href="https://www.facebook.com/Campuslands/?locale=es_LA" class="blue-link-underline" target="_blank"> Campuslands.</a> priorizo los resultados satisfactorios, manteniendo la orientación al logro.
+            Actualmente me encuentro estudiando en<a href="https://www.facebook.com/Campuslands/?locale=es_LA" class="green-link-underline" target="_blank"> Campuslands.</a> priorizo los resultados satisfactorios, manteniendo la orientación al logro.
           </p>
           <div class="hero-btns">
             <a href="#projects" class="btn-blue"><i class="fas fa-code"></i>Proyectos</a>
@@ -117,14 +117,9 @@
       </div>
 
       <div class="samsprofile">
-
-        <div class="sphere" id="sphereContainer">
-          
-        </div>
         <div class="profile-container">
             <img src="./dist/img/Sam.png" alt="Yo" class="profile-image">
         </div>
-
 
       </div>
       <!-- LINKS SOCIALES -->
@@ -187,130 +182,6 @@
           </ul>
         </div>
       </section>
-    
-      <!-- Include Three.js and GLTFLoader -->
-    <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/build/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/loaders/GLTFLoader.js"></script>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-          const container = document.getElementById('sphereContainer');
-          const width = container.clientWidth;
-          const height = container.clientHeight;
-
-          const scene = new THREE.Scene();
-          const camera = new THREE.PerspectiveCamera(65, width / height, 0.1, 1000);
-          const renderer = new THREE.WebGLRenderer({ antialias: true });
-          renderer.setSize(width, height);
-          renderer.setClearColor(0x000000, 0);
-          container.appendChild(renderer.domElement);
-
-          
-          const ambientLight = new THREE.AmbientLight(0x404040, 2); 
-          scene.add(ambientLight);
-
-          const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-          directionalLight.position.set(1, 1, 1).normalize();
-          scene.add(directionalLight);
-
-          
-          const loader = new THREE.GLTFLoader();
-          let sphere;
-
-          loader.load('./dist/assets/sphere.glb', function (gltf) {
-              sphere = gltf.scene;
-              sphere.scale.set(0.5, 0.5, 0.5); 
-              sphere.position.set(0, 0, 0); 
-              scene.add(sphere);
-              console.log('Modelo cargado:', gltf);
-          }, undefined, function (error) {
-              console.error('Error al cargar el modelo:', error);
-          });
-
-          
-          camera.position.set(0, 1, 100);
-          camera.lookAt(0, 1, 0); 
-
-          
-          function onWindowResize() {
-              const width = container.clientWidth;
-              const height = container.clientHeight;
-              renderer.setSize(width, height);
-              camera.aspect = width / height;
-              camera.updateProjectionMatrix();
-          }
-
-          window.addEventListener('resize', onWindowResize);
-          onWindowResize(); 
-
-          
-          let isDragging = false;
-          let previousMousePosition = { x: 0, y: 0 };
-          let rotationVelocity = new THREE.Vector2(0, 0);
-          let rotationEasing = 0.05; 
-
-          
-          function animate() {
-              requestAnimationFrame(animate);
-
-              if (sphere) {
-                  if (isDragging) {
-                      const deltaX = (mousePosition.x - previousMousePosition.x) * 0.005; 
-                      const deltaY = (mousePosition.y - previousMousePosition.y) * 0.005; 
-                      sphere.rotation.y += deltaX;
-                      sphere.rotation.x += deltaY;
-                      previousMousePosition = { ...mousePosition };
-                  } else {
-                      
-                      sphere.rotation.y += rotationVelocity.x;
-                      sphere.rotation.x += rotationVelocity.y;
-                      rotationVelocity.multiplyScalar(1 - rotationEasing);
-                  }
-              }
-
-              renderer.render(scene, camera);
-          }
-
-          animate();
-
-          // Handle mouse events
-          let mousePosition = { x: 0, y: 0 };
-
-          container.addEventListener('mousedown', (event) => {
-              isDragging = true;
-              mousePosition = { x: event.clientX, y: event.clientY };
-              previousMousePosition = { ...mousePosition };
-              container.style.cursor = 'grabbing'; 
-          });
-
-          container.addEventListener('mousemove', (event) => {
-              if (isDragging) {
-                  mousePosition = { x: event.clientX, y: event.clientY };
-              }
-          });
-
-          container.addEventListener('mouseup', () => {
-              isDragging = false;
-              rotationVelocity.set(
-                  (mousePosition.x - previousMousePosition.x) * 0.005, 
-                  (mousePosition.y - previousMousePosition.y) * 0.005 
-              );
-              container.style.cursor = 'grab'; 
-          });
-
-          container.addEventListener('mouseleave', () => {
-              if (isDragging) {
-                  isDragging = false;
-                  rotationVelocity.set(
-                      (mousePosition.x - previousMousePosition.x) * 0.005, 
-                      (mousePosition.y - previousMousePosition.y) * 0.005 
-                  );
-                  container.style.cursor = 'grab'; 
-              }
-          });
-      });
-  </script>
-  
   
   
       <!-- PROYECTOS -->
@@ -608,27 +479,8 @@
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-        <!-- Particles.js for hero section -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js" integrity="sha512-Kef5sc7gfTacR7TZKelcrRs15ipf7+t+n7Zh6mKNJbmW+/RRdCW9nwfLn4YX0s2nO6Kv5Y2ChqgIakaC6PW09A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
         <!-- GSAP animations -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
-
-        <script>
-        particlesJS.load('particles-js', './dist/particles.json', function(){
-            console.log("particles.json cargado...")
-        })
-
-        particlesJS.load('skills', './dist/particles.json', function(){
-            console.log("particles.json cargado...")
-        })
-
-        particlesJS.load('footer', './dist/particles.json', function(){
-            console.log("particles.json cargado...")
-        })
-
-        particlesJS.load()
-        </script>
 
         <script defer src="./dist/js/app.js"></script>
 

@@ -319,9 +319,9 @@ html {
     stroke-dashoffset: calc(var(--success-stroke) * 1px);
   }
   
-  .blue-link-underline {
-    color: #0b63f3;
-    border-bottom: 1px solid #0b63f3;
+  .green-link-underline {
+    color: #5fe7b3;
+    border-bottom: 1px solid #5fe7b3;
   }
   
   .flex {
@@ -345,31 +345,18 @@ html {
   }
   
   header {
-    background: #0A0C0D;
+    background: rgba(0, 0, 0, 0.8);
     background-size: cover;
     min-height: 80vh;
     position: relative;
   }
-  header #particles-js {
-    display: none;
-    height: 80vh;
-    position: relative;
-  }
-  header #particles-js canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-  }
+
   header nav {
     width: 100%;
   }
   header nav .nav-container {
-    position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
   }
 
   header nav .nav-container .nav-links {
@@ -395,7 +382,7 @@ html {
     height: 2px;
     top: 3px;
     margin: auto;
-    background: #3b82f6;
+    background: #5fe7b3;
     transition: width 0.3s ease;
   }
   header nav .nav-container .nav-links .link:hover::after {
@@ -424,7 +411,7 @@ html {
     height: 2px;
     top: 3px;
     margin: auto;
-    background: #3b82f6;
+    background: #5fe7b3;
     transition: width 0.3s ease;
   }
   header nav .mobile-menu .container .mobile-menu-links ul .link:hover::after {
@@ -457,8 +444,8 @@ html {
     max-width: 800px;
     padding: 0.5rem;
   }
-  header .hero p .blue-link-underline {
-    color: #3783ff;
+  header .hero p .green-link-underline {
+    color: #5fe7b3;
   }
   header .hero .hero-btns {
     white-space: nowrap;
@@ -473,7 +460,6 @@ html {
     position: absolute;
     left: 60%;
     top: 10%;
-  
   }
   
   .profile-container {
@@ -482,8 +468,8 @@ html {
   
   .profile-image {
     width: 450px;
-    height: auto;
-    filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.2)); /* Ajusta los valores según tu preferencia */
+    /* height: auto; */
+    filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.2));
     user-select: none;
     -webkit-user-drag: none;
   }
@@ -599,8 +585,42 @@ html {
   header .seperator-skew svg .fill-white {
     fill: #F2F2F2;
   }
+
+
+  /* MEDIA QUERIES */
+
   
-  @media screen and (max-width: 999px) {
+
+  @media screen and (max-width: 1920px) {
+    .samsprofile {
+      z-index: 3;
+      top: 7%;
+      left:  60%;
+    }
+    
+  }
+  
+  @media screen and (max-width: 1024px) {
+    header nav .container {
+      padding-bottom: 0.75rem;
+    }
+    header nav .nav-container {
+      justify-content: center;
+    }
+    header .hero {
+      top: 55%;
+    }
+    header .socials {
+      display: none;
+    }
+
+    .samsprofile {
+      top: 10%;
+      left:  60%;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
     header nav .container {
       padding-bottom: 0.75rem;
     }
@@ -614,14 +634,42 @@ html {
       display: none;
     }
   }
+
   @media screen and (max-width: 768px) {
-      .eye-container {
-        display: none;
+
+    header .hero {
+      top: 33%;
+      width: 100%;
+      left: 50%;
     }
-    .hero {
-      width: 90%;
+
+    header .seperator-skew {
+      bottom: -1.5px;
+    }
+
+    header .hero h1,
+    header .hero h2 span {
+    white-space: wrap;
+    }
+
+    header .hero p{
+      text-align: center;
+    }
+
+    header .hero .hero-btns {
+      white-space: wrap;
+    }
+
+    .samsprofile {
+      top: 50%;
+      left:  35%;
+    }
+
+    .profile-image {
+      width: 250px;
     }
   }
+
   @media screen and (max-width: 500px) {
     header nav .mobile-menu .container .mobile-menu-links ul li {
       margin: 0 0.5rem;
@@ -636,9 +684,6 @@ html {
   @media screen and (min-height: 900px) {
     header {
       min-height: 70vh;
-    }
-    header #particles-js {
-      height: 70vh;
     }
   }
 
@@ -716,16 +761,6 @@ html {
   
   #objetivos-profesionales {
     position: relative;
-  }
-
-  #sphereContainer {
-    width: 100%;
-    height: 50%; /* Ajusta esto según tus necesidades */
-    background: transparent;
-    position: absolute;
-    left: 250px;
-    bottom: 0px;
-    top: -80px
   }
 
   
