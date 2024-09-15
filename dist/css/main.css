@@ -571,7 +571,7 @@ html {
   header .seperator-skew {
     z-index: 7;
     position: absolute;
-    bottom: -0.5px;
+    bottom: -1.5px;
     left: 0;
     right: 0;
     height: 150px;
@@ -597,7 +597,37 @@ html {
       top: 7%;
       left:  60%;
     }
+
+    .profile-image {
+      width: 400px;
+    }
     
+  }
+
+  @media screen and (max-width: 1366px) {
+
+    .samsprofile {
+      z-index: 3;
+      top: 7%;
+      left:  60%;
+    }
+
+    .profile-image {
+      width: 330px;
+    }
+
+    header .hero {
+      left: 35%;
+    }
+
+    header .hero h1 {
+      font-size: 2rem;
+    }
+
+    header .hero p {
+      text-align: center;
+      font-size: 1.5rem;
+    }
   }
   
   @media screen and (max-width: 1024px) {
@@ -644,7 +674,8 @@ html {
     }
 
     header .seperator-skew {
-      bottom: -1.5px;
+      bottom: -2.5px;
+      width: 100px;
     }
 
     header .hero h1,
@@ -661,8 +692,8 @@ html {
     }
 
     .samsprofile {
-      top: 50%;
-      left:  35%;
+      top: 53%;
+      left:  22%;
     }
 
     .profile-image {
