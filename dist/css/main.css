@@ -594,7 +594,7 @@ html {
   @media screen and (max-width: 1920px) {
     .samsprofile {
       z-index: 3;
-      top: 7%;
+      top: 15%;
       left:  60%;
     }
 
